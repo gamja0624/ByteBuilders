@@ -23,6 +23,4 @@
 	
 	<context:component-scan base-package="himedia.project.bytebuilders" />
 	
-	
-	
 </beans:beans>

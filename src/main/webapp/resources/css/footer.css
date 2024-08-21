@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.userFooter {
+	background-color: #1F1F1F;
+	width: 100%;
+	height: 200px;
+	position : absolute;
+	bottom : 0;
+}
+
