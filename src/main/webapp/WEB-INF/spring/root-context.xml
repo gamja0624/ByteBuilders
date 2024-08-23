@@ -17,8 +17,50 @@
 	</bean>
 
 	<!-- repository 빈  -->	
-  	<bean id="repository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  	<bean id="Diaryrepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
   		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.DiaryRepository" />
   		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
  	</bean>
+ 	
+ 	<!--  repository 빈   -->
+	<bean id="Noticerepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.NoticeRepository"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="Adminrepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.AdminRepository"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.UserRepository"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="qnaRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.QnARepository" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+ 	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </beans>

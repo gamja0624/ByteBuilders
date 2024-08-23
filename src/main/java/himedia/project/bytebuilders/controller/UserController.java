@@ -62,5 +62,8 @@ public class UserController {
 		model.addAttribute("diaryList", diaryDetail.get());
 		return "user/diary/diaryDetail";
 	}
+	
+	
+	
 
 }

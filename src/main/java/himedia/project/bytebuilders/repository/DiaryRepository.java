@@ -43,4 +43,10 @@ public interface DiaryRepository {
 	// [ 삭제 ] 일기 삭제
 	//@Delete
 	
+	// [ 검색 ] 일기 title로 검색하기 작성자 : 노태윤 
+	@Select("SELECT diary_title,diary_date,attachment_file "
+			+ "FROM diary WHERE diary_title "
+			+ "LIKE CONCAT('%', #{diary_title},'%')")
+    List<Diary> findbytitlediary(String diary_title);
+	
 }
