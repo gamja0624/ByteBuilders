@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+h4 {
+	color: #f00;
+}
+
+.true {
+	visibility: hidden;
+}

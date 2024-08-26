@@ -15,11 +15,34 @@
 </head>
 <body>
   <div class="content wrap">
+    <h2 class="fs-1 fw-bold my-3">
+        공지사항 수정
+    </h2>
     <form action="${context}admin/noticeEdit/${notice.notice_id}"
     method="post">
+      <div class="row mb-3">
+          <div class="col">
+            <label class="form-label fs-5 fw-bold">
+              작성자
+            </label>
+            <input class="form-control-plaintext"
+            type="text"
+            readonly="readonly"
+            value="${admin_key}">
+          </div>
+          <div class="col">
+            <label class="form-label fs-5 fw-bold">
+              등록일
+            </label> 
+            <input class="form-control-plaintext"
+            type="text"
+            readonly="readonly"
+            value="${notice.notice_date}">
+          </div>
+        </div>
       <div class="mb-3">
-        <label class="form-label">
-          공지사항 제목:
+        <label class="form-label fs-5 fw-bold">
+          공지사항 제목
         </label>
         <input class="form-control" 
         type="text" 
@@ -28,18 +51,20 @@
         />
       </div>
       <div class="mb-3">
-        <label class="form-label">
-          공지사항 내용:
+        <label class="form-label fs-5 fw-bold">
+          공지사항 내용
         </label>
         <textarea class="form-control"
         rows ="10" 
         name="notice_content">${notice.notice_content}
         </textarea>
       </div>
-      <button class="btn btn-secondary"
-      type="submit">
-        수정하기
-      </button>
+      <div class="d-grid my-5 gap-2 justify-content-md-end">
+        <button class="btn btn-secondary"
+        type="submit">
+          수정하기
+        </button>
+      </div>
     </form>
   </div>
   

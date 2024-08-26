@@ -10,7 +10,7 @@
 <link href="${resPath}css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+<!-- 작성자 : 노태윤 -->
   <!-- 사용자 입장에서 공지 검색 -->
   <h1>Search</h1>
   <form class="d-flex" role="search" action="${context}noticeSearchResults" method="post">

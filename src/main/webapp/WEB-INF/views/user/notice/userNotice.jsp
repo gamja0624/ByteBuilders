@@ -8,24 +8,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${resPath}css/bootstrap.min.css" rel="stylesheet">
-<link href="${staticUrl}css/noticeSearchResults.css" rel="stylesheet">
+<link href="${staticUrl}css/userNoticeList.css" rel="stylesheet">
 </head>
 <body>
-
-  <div class="notice-Search-Results">
-    <h1>공지사항 검색 결과</h1>
+<!-- 작성자 : 노태윤  -->
+<!-- 기능설명 : 사용자입장에서 공지사항 검색,조회 가능한 페이지  -->
+  <div class="user-notice-list">
+    <h1>공지사항 조회</h1>
   </div>
-  
-  <hr>
 
-  <div class="noticeSearchResultsTable">
-    <table class="table table-dark table-hover">
+  <!-- 사용자 입장에서 공지 검색 -->
+  <div class="noticesearchbar">
+    <a class="navbar-brand"></a>
+    <nav class="navbar bg-body-tertiary">
+      <form class="d-flex" role="search" action="${context}noticeSearchResults" method="post">
+        <input class="form-control me-2" type="text" id="selectKeyword" name="notice" placeholder="search...">
+        <button class="btn btn-out-outline-sucess" id="searchButton" type="submit">Search</button>
+      </form>
+    </nav>
+  </div>
+  <hr>
+  <div class="noticetable">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>공지사항 ID</th>
-          <th>ADMIN key</th>
           <th>공지사항 이름</th>
-          <th>공지사항 내용</th>
           <th>공지사항 날짜</th>
           <th>공지사항 우선순위</th>
         </tr>

@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import himedia.project.bytebuilders.dto.Admin;
 import himedia.project.bytebuilders.dto.Notice;
 import himedia.project.bytebuilders.repository.AdminRepository;
+import himedia.project.bytebuilders.repository.DiaryRepository;
 import himedia.project.bytebuilders.repository.NoticeRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,11 +31,12 @@ public class AdminController {
 	
 	private final NoticeRepository noticeRepository;
 	private final AdminRepository adminRepository;
-	
-	//의존성 주입
-	public AdminController(NoticeRepository noticeRepository, AdminRepository adminRepository) {
+	private final DiaryRepository diaryRepository;  // 일기 리포지토리 추가
+
+	public AdminController(NoticeRepository noticeRepository, AdminRepository adminRepository, DiaryRepository diaryRepository) {
 		this.noticeRepository = noticeRepository;
 		this.adminRepository = adminRepository;
+		this.diaryRepository = diaryRepository;  // 생성자에 추가
 	}
 
 	//로그인 관련
@@ -45,13 +48,18 @@ public class AdminController {
 	
 	@PostMapping("/login")
 	public String adminLoginCheck(@ModelAttribute("admin") Admin admin,
-			HttpServletRequest request) {
+			HttpServletRequest request, Model model,
+			RedirectAttributes ra) {
 		
 		if(adminRepository.login(admin).isPresent()) {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin_key", admin.getAdmin_key());
 			return "redirect:/admin/notice";
-		}
+		} 
+		
+//		model.addAttribute("loginFailure", true );
+		//ra.addAttribute("message", "아이디 또는 비밀번호가 잘못 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.") ;
+		ra.addFlashAttribute("loginFailure", true);
 		
 		return "redirect:/admin/login";
 	}
@@ -69,7 +77,13 @@ public class AdminController {
 	// 공지사항 관련
 	// 작성자 : 양한재
 	@GetMapping("/notice")
-	public String noticeList(Model model, @SessionAttribute("admin_key") String admin_key) {
+	public String noticeList(Model model, @SessionAttribute(name = "admin_key", required = false) String admin_key) {
+	
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
 		
 		model.addAttribute("notices", noticeRepository.findAll());
 		return "admin/notice/noticeList";
@@ -77,14 +91,34 @@ public class AdminController {
 	
 	@GetMapping("/notice/{noticeId}")
 	public String noticeDetail(@PathVariable("noticeId") int noticeId, Model model,
-			@SessionAttribute("admin_key") String admin_key) {
+			@SessionAttribute(name = "admin_key", required = false) String admin_key) {
+		
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
 		
 		model.addAttribute("notice", noticeRepository.findbyId(noticeId));
 		return "admin/notice/noticeDetail";
 	}
 	
 	@GetMapping("/noticePost")
-	public String noticeForm(@SessionAttribute("admin_key") String admin_key) {
+	public String noticeForm(@SessionAttribute(name = "admin_key", required = false) String admin_key,
+			Model model) {
+		
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
+		
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		String date = simpleDateFormat.format(new Date());   // 공지사항 작성일 입력
+		
+		model.addAttribute("admin_key", admin_key);
+		model.addAttribute("date", date);
 		
 		return "admin/notice/noticeForm";
 	}
@@ -98,7 +132,6 @@ public class AdminController {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 		String date = simpleDateFormat.format(new Date());   // 공지사항 작성일 입력
 		
-		log.info(notice_content);
 		notice_content = notice_content.replace("\r\n", "<br>");
 		
 		noticeRepository.save(admin_key, notice_title,notice_content, date);
@@ -107,7 +140,13 @@ public class AdminController {
 	
 	@GetMapping("/noticeEdit/{noticeId}")
 	public String noticeEditForm(@PathVariable("noticeId") int noticeId, Model model,
-			@SessionAttribute("admin_key") String admin_key) {
+			@SessionAttribute(name = "admin_key", required = false) String admin_key) {
+		
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
 		
 		Notice notice = noticeRepository.findbyId(noticeId);
 		notice.setNotice_content(notice.getNotice_content().replace("<br>", "\r\n"));
@@ -128,10 +167,44 @@ public class AdminController {
 	
 	@GetMapping("/noticeDelete/{noticeId}")
 	public String noticeDelete(@PathVariable("noticeId") int noticeId,
-			@SessionAttribute("admin_key") String admin_key) {
+			@SessionAttribute(name = "admin_key", required = false) String admin_key, Model model) {
+		
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
 		
 		noticeRepository.delete(noticeId);
 		return "redirect:/admin/notice";
 	};
+	
+	// 노태윤 
+    // 멤버 일기 목록으로 이동
+    @GetMapping("/memberDiaryList")
+    public String diaryList(Model model) {
+        model.addAttribute("DiaryList", diaryRepository.findAll());
+        return "admin/member/memberDiaryList";
+    }
+    
+    // 노태윤
+    // 관리자입장에서 유저 검색 
+	@PostMapping("/diarySearchResults")
+	public String diarySearch(@RequestParam("diary") String diaryTitle, Model model) {
+		model.addAttribute("DiaryList", diaryRepository.findByTitleDiary(diaryTitle));
+		return "user/search/diarySearchResults";
+	}
+    
+    // 노태윤
+    // 일기 삭제 기능 추가
+    @PostMapping("/diaryDelete/{diaryId}")
+    public String deleteDiary(@PathVariable("diaryId") int diaryId, @SessionAttribute("admin_key") String admin_key) {
+        diaryRepository.delete(diaryId);
+        return "redirect:/admin/memberDiaryList";
+    }
+
+	
+	
+	
 	
 }

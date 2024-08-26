@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import himedia.project.bytebuilders.dto.QnA;
 
 public interface QnARepository {
-	
+	// 작성자 : 노태윤
     // [문의 전체 목록] 출력
     @Select("SELECT * FROM QnA")
     List<QnA> findQnA();

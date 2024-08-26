@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import himedia.project.bytebuilders.dto.Diary;
+import himedia.project.bytebuilders.dto.Notice;
 import himedia.project.bytebuilders.repository.DiaryRepository;
+import himedia.project.bytebuilders.repository.NoticeRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -19,9 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 	
 	public DiaryRepository diaryReposiotry;
+	public NoticeRepository noticeRepository;
 	
 	@Autowired
-	public UserController(DiaryRepository diaryReposiotry) {
+	public UserController(DiaryRepository diaryReposiotry, NoticeRepository noticeRepository) {
+		this.noticeRepository = noticeRepository;
 		this.diaryReposiotry = diaryReposiotry;
 	}
 	
@@ -63,6 +67,22 @@ public class UserController {
 		return "user/diary/diaryDetail";
 	}
 	
+//	// 작성자 : 노태윤 (8/26)
+//	// 기능 설명: noticeSearchResults로 이동
+//	@PostMapping("/noticeSearchResults")
+//	public String noticeSearch(@RequestParam("notice") String notice, Model model) {
+//		model.addAttribute("NoticeList", noticeRepository.findbytitle(notice));
+//		return "user/search/noticeSearchResults";
+//	}
+	
+	// 작성자 : 노태윤 (8/26)
+	// 기능 설명: userNotice로 이동 
+	@GetMapping("/userNotice")
+	public String userNotice(Model model) {
+		List<Notice> noticeList = noticeRepository.findAll();
+		model.addAttribute("NoticeList", noticeList);
+		return "user/notice/userNotice";
+	}
 	
 	
 

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+.QnA-list-title {
+	width:50%;
+	margin: 0 auto;
+}
+
+.QnAList {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	margin: 0 auto;
+	height: 50%;
+}

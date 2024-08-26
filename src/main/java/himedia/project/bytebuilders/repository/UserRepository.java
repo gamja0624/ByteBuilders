@@ -7,9 +7,10 @@ import org.apache.ibatis.annotations.Select;
 import himedia.project.bytebuilders.dto.User;
 
 public interface UserRepository {
-	
+	// 작성자 : 노태윤
 	// [유저 전체 목록] 출력
-	@Select("SELECT user_id,email,phonenumber,signup_date,delete_id FROM user")
+	@Select("SELECT user_id,email,phonenumber,signup_date,delete_id "
+			+ "FROM user")
 	List<User> findUser();
 
 	// [검색] 관리자입장에서 유저 검색

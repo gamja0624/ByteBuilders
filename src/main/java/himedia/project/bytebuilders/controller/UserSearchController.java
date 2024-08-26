@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import himedia.project.bytebuilders.dto.Diary;
 import himedia.project.bytebuilders.repository.DiaryRepository;
 import himedia.project.bytebuilders.repository.NoticeRepository;
 
@@ -33,10 +34,12 @@ public class UserSearchController {
 		return "user/search/noticeSearchResults";
 	}
 	
-	@PostMapping("/diarySearchResults")
-	public String diarySearch(@RequestParam("diary") String diaryTitle, Model model) {
-		model.addAttribute("DiaryList", diaryRepository.findbytitlediary(diaryTitle));
-		return "user/search/diarySearchResults";
-	}
+    // 8/25 노태윤작성
+    @GetMapping("/memberDiaryDetail")
+    public String diaryDetail(@RequestParam(value = "id", required = true) int diary_id, Model model) {
+        Diary diary = diaryRepository.findById(diary_id);
+        model.addAttribute("diary", diary);
+        return "admin/member/memberDiaryDetail";
+    }
 
 }

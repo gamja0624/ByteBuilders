@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -40,13 +39,29 @@ public interface DiaryRepository {
 			  +	"WHERE diary_id=#{diary_id}")
 	int update(@Param("diary_id") int diary_id, Diary updateDiary);
 	
-	// [ 삭제 ] 일기 삭제
-	//@Delete
+	// [삭제] 일기 삭제
+	@Delete("DELETE FROM diary "
+			+ "WHERE diary_id = "
+			+ "#{diary_id}")
+	void delete(int diary_id);
 	
 	// [ 검색 ] 일기 title로 검색하기 작성자 : 노태윤 
 	@Select("SELECT diary_title,diary_date,attachment_file "
 			+ "FROM diary WHERE diary_title "
 			+ "LIKE CONCAT('%', #{diary_title},'%')")
-    List<Diary> findbytitlediary(String diary_title);
+    List<Diary> findByTitleDiary(String diary_title);
 	
+	// 작성자 : 노태윤
+	// [조회] 전체 일기 목록 조회 - 
+	@Select("SELECT "
+			+ "diary_id, diary_title, diary_date, create_date, attachment_file "
+			+ "FROM diary")
+	List<Diary> findAll();
+
+	// 작성자 : 노태윤
+	// [조회] diary_id로 일기 조회
+	@Select("SELECT * "
+			+ "FROM diary "
+			+ "WHERE diary_id = #{diary_id}")
+	Diary findById(int diary_id);
 }
