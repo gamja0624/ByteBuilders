@@ -12,10 +12,8 @@
 </head>
 <body>
 <script type="text/javascript">
-var message = '${msg}';
-var returnUrl = '${url}';
-alert(message);
-document.location.href= ${context}+returnUrl;
+alert("${msg}");
+document.location.href= "${context}"+"${url}";
 </script>
 </body>
 </html>

@@ -6,3 +6,30 @@
 	margin: 30px auto;
 }
 
+.searchbar {
+  overflow: hidden;
+  background-color: #BE6081;
+  backdrop-filter: blur(2px);
+}
+.searchbar-icon {
+  right: 27px;
+  top: 25px;
+  background-color: transparent;
+  color: #BE6081;
+  cursor: pointer;
+}
+input[type=text] {
+  padding: 9px;
+  border: none;
+  margin: 16px 14px;
+  font-size: 18px;
+  background-color: #F4ADCD;
+  text-align: left;
+  text-indent: 8px;
+  outline: none;
+}
+.searchbar , input[type=text] {
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  
+}

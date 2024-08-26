@@ -77,7 +77,7 @@ public class AdminController {
 	// 공지사항 관련
 	// 작성자 : 양한재
 	@GetMapping("/notice")
-	public String noticeList(Model model, @SessionAttribute(name = "admin_key", required = false) String admin_key) {
+	public String noticeList(@SessionAttribute(name = "admin_key", required = false) String admin_key, Model model) {
 	
 		if(admin_key == null) {
 			model.addAttribute("msg", "로그인 해주세요.");
@@ -99,7 +99,10 @@ public class AdminController {
 			return "alert";
 		}
 		
-		model.addAttribute("notice", noticeRepository.findbyId(noticeId));
+		Notice notice = noticeRepository.findbyId(noticeId);
+		notice.setNotice_content(notice.getNotice_content().replace("<br>", "\r\n"));
+		
+		model.addAttribute("notice", notice);
 		return "admin/notice/noticeDetail";
 	}
 	
