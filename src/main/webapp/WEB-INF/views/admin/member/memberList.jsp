@@ -20,8 +20,13 @@
   <div class="searchbar">
     <a class="navbar-brand"></a>
     <nav class="navbar bg-body-tertiary">
+<<<<<<< HEAD
       <form class="d-flex" role="search" action="${pageContext.request.contextPath}/admin/memberSearchResults" method="get">
         <input class="form-control me-2" type="text" id="selectKeyword" name="user_id" placeholder="회원 검색...">
+=======
+      <form class="d-flex" role="search" action="${context}memberSearchResults" method="get">
+        <input class="form-control me-2" type="text" id="selectKeyword" name="user" placeholder="회원 검색...">
+>>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
         <button class="btn btn-out-outline-sucess" id="MembersearchButton" type="submit">Search</button>
       </form>
     </nav>

@@ -17,7 +17,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR:wght@100..900&display=swap"
 rel="stylesheet">
 <style>
-
   body {                    /* body 추가 */
     font-family: Gowun Batang, merriweather, sans-serif;
     margin: 0 auto;
@@ -31,7 +30,7 @@ rel="stylesheet">
   <header class="p-3 text-bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a class="navbar-brand" href="#"> 
+        <a class="navbar-brand" href="${context}"> 
           <img src="resources/img/logo3.png" alt="Logo" width="30" height="24">
         </a>
         

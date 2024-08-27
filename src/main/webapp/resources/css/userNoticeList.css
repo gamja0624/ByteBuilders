@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
 .user-notice-list {
 	width:50%;
 	margin: 0 auto;
@@ -12,8 +16,12 @@
 	align-items: center;
 	width:50%;
 	margin: 0 auto;
+<<<<<<< HEAD
     height:50%;
     	
+=======
+    height:50%;	
+>>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
  }
 
 

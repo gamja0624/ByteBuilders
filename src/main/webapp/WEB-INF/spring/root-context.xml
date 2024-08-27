@@ -30,7 +30,9 @@
 	</bean>
 	
 	<!-- repository 빈 : 다이어리 -->	
-  	<bean id="DiaryRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+
+	<!-- repository 빈  -->	
+  	<bean id="Diaryrepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
   		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.DiaryRepository" />
   		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
  	</bean>
@@ -52,5 +54,6 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
- 		
+	
+	
 </beans>

@@ -34,6 +34,5 @@ public interface QnARepository {
 	// [관리자 문의 조회] 노태윤
     @Select("SELECT * FROM QnA")
     List<QnA> findQnA();
-
-	
+    
 }

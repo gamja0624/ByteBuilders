@@ -38,6 +38,11 @@ public class AdminSearchController {
 		return "admin/member/memberList";
 	}
 	
+	@GetMapping("/searchBar")
+	public String search() {
+		return "user/search/searchBar";
+	}
+	
 	// 작성자 : 노태윤 8/23일 작성
 	// 기능 요약 : search bar에서 membersearch로 이동할때 검색 기능
 	// 전 : search bar 후 : membersearch

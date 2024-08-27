@@ -12,12 +12,31 @@
 <title>공지사항 리스트</title>
 <link href="${resPath}css/adminNotice.css" rel="stylesheet">
 <link href="${resPath}css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+<link href="" rel="stylesheet">
 </head>
 <body>
   <div>
     <h2 class="fs-1 fw-bold my-3">
         공지사항 리스트
     </h2>
+    
+    <div class="searchbar">
+      <form  
+      role="search" 
+      action="${context}noticeSearchResults" 
+      method="post">
+        <input class="form-control me-2" 
+        type="text" id="selectKeyword" 
+        name="notice" 
+        placeholder="search...">
+        <span class="searchbar-icon">
+          <i class="fas fa-search">
+          </i>
+        </span>
+       </form>  
+    </div>
+    
     <div class="content my-5">
       <table class="table table-striped table-hover">
       	<tr>

@@ -63,7 +63,6 @@ public interface DiaryRepository {
 	void delete (int dairy_id);
 	
 	
-	
 	///////////////////////////////////////////////////////////////////
 	// 작성자 : 노태윤
 	// [조회] 전체 일기 목록 조회 - 
@@ -87,5 +86,5 @@ public interface DiaryRepository {
 			+ "WHERE diary_id = #{diary_id}")
 	Diary findById(int diary_id);
 	
-	
+
 }

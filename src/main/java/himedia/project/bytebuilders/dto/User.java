@@ -1,30 +1,30 @@
 package himedia.project.bytebuilders.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
+
 @Getter @Setter
-
+@NoArgsConstructor
 public class User {
-
-	private int userId;
+	// User 필드
+	private int user_id;
 	private String email;
 	private String phonenumber;
-	private String password;
-	private Date signupDate;
-	private boolean deleteId;
-
-	public User(int userId, String email, String phonenumber, String password, Date signupDate, boolean deleteId) {
-		this.userId = userId;
+	private Date signup_date;
+	private boolean delete_id;
+	
+	// 생성자
+	public User(int user_id, String email, String phonenumber, 
+		String password, Date signup_date, boolean delete_id) {
+		this.user_id = user_id;
 		this.email = email;
 		this.phonenumber = phonenumber;
-		this.password = password;
-		this.signupDate = signupDate;
-		this.deleteId = deleteId;
+		this.signup_date = signup_date;
+		this.delete_id = delete_id;
 	}
-	
+
 }

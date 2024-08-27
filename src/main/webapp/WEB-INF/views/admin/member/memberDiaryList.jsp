@@ -49,7 +49,11 @@
           <tr>
             <td>${diary.diary_id}</td>
             <!-- 상세 페이지 이동 -->
+<<<<<<< HEAD
             <td><a href="${pageContext.request.contextPath}/admin/memberDiaryDetail?id=${diary.diary_id}">${diary.diary_title}</a></td>
+=======
+            <td><a href="${pageContext.request.contextPath}/memberDiaryDetail?id=${diary.diary_id}">${diary.diary_title}</a></td>
+>>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
             <td>${diary.create_date}</td>
             <td>
               <!-- 삭제하기 버튼 추가 -->

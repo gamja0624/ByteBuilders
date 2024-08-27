@@ -40,6 +40,15 @@
   <!-- 작성자 : 최은지  -->    
   <!-- footer  -->
   </div>
+</head>
+<body>
+  <h1>
+	 Landing Page
+  </h1>
+
+  <!-- 작성자 : 최은지  -->    
+  <!-- footer  -->
+  
   <footer class="userFooter">
   <div class="text-center text-white">
     <ul class="nav justify-content-center pb-3 mb-3 mt-5">

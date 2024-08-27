@@ -17,7 +17,6 @@ public interface UserRepository {
 	// 모든 사용자 조회
     @Select("SELECT * FROM user")
     List<User> findAll();	
-    
 	// 작성자 : 노태윤
 	// [유저 전체 목록] 출력
 	@Select("SELECT user_id,email,phonenumber,signup_date,delete_id "
