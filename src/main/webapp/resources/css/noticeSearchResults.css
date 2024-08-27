@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.notice-Search-Results {
+	width:50%;
+	margin: 0 auto;
+}
+
+.noticeSearchResultsTable {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	margin: 0 auto;
+	height: 50%;
+}

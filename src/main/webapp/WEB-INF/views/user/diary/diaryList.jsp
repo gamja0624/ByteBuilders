@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<c:url var="context" value="/" />    
-<c:url var="resPath" value="/resources/" />
-<c:url var="staticUrl" value="/resources/" />
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>    
+<C:url var="context" value="/" />    
+<C:url var="resPath" value="/resources/" />
+<C:url var="staticUrl" value="/resources/" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,39 +11,59 @@
 <title>Insert title here</title>
   <link rel="stylesheet" href="${resPath}css/bootstrap.min.css">
   <link rel="stylesheet" href="${staticUrl}css/footer.css">
+  <style type="text/css">
+    h1 {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    
+    #diary-list {
+      width: 800px;
+      margin: 20px auto;
+      hegiht: auto;
+      min-height: 100%;
+    
+    }
+    .diary-row {
+      margin : 10px auto;
+    }
+    .diary-col {
+      margin : 10px auto;
+    }
+  </style>
 </head>
 <body>
-  <h1>이용자 다이어리 리스트</h1>
+  <%@ include file="../../user/navbar/navbar.jsp" %>
   <!-- 데이터 : 일기 제목, 일기 날짜, 일기 이미지  -->
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>아이디</th>
-          <th>제목</th>
-          <th>날짜</th>
-          <th>이미지</th>
-        </tr>
-      </thead>    
-      <tbody>
-        <c:forEach var="diaryList" items="${diary}">
-        <tr>
-          <td>
-              ${diaryList.diary_id} 
-          </td>
-           <td>
-            <a href="${context}/diaryDetail/${diaryList.diary_id}">
-              ${diaryList.diary_title}
-            </a>
-          </td>        
-          <td>${diaryList.diary_date}</td>        
-          <td>${diaryList.attachment_file}</td>        
-        </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-      <%@ include file="../../user/footer/footer.jsp" %>
-  </div>
+  
+  <div class="wrap">
+    <div id="diary-list">
+      <div style="margin: 30px 0">
+        <h1>이용자 다이어리 리스트</h1>
+      </div>
+      
+        <div class="row diary-row">
+        <C:forEach var="diaryList" items="${diary}">
+          <div class="col-3 diary-col"> 
+            <div class="card">
+              <img class="card-img-top" alt="cover-img" src="${diaryList.attachment_file}">
+              <div class="card-body">
+                <div class="card-text">
+                  <a href="${context}diaryDetail/${diaryList.diary_id}">
+                    ${diaryList.diary_title}
+                  </a>
+                  <div>
+                    ${diaryList.diary_date}
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+         </C:forEach>
+        </div>
+      </div>
+    </div>
+  <%@ include file="../../user/footer/footer.jsp" %>
 </body>
 </html>
 

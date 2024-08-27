@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.member-list-title {
+	width:50%;
+	margin: 0 auto;
+}
+
+ .membertable {
+	display: flex;
+	text-align:center;	
+	justify-content: center;
+	align-items: center;
+	width:50%;
+	margin: 0 auto;
+    height:50%;
+ }
+
+ .searchbar {
+	display: flex;
+	text-align:center;	
+	justify-content: center;
+	align-items: center;
+	width:50%;
+	margin: 0 auto;
+    height:50%;	
+ }

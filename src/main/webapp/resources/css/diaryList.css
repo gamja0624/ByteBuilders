@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.diary-list-title {
+	width:50%;
+	margin: 0 auto;
+}
+
+ .diarytable {
+	display: flex;
+	text-align:center;	
+	justify-content: center;
+	align-items: center;
+	width:50%;
+	margin: 0 auto;
+    height:50%;
+ }
+
+ .searchbar {
+	display: flex;
+	text-align:center;	
+	justify-content: center;
+	align-items: center;
+	width:50%;
+	margin: 0 auto;
+    height:50%;	
+ }

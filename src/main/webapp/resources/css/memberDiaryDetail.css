@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+body {
+    max-width: 70%;
+    margin: 0 auto;
+    font-family: '나눔고딕', sans-serif;
+}
+
+/* 전체 일기 페이지를 감싸는 컨테이너 */
+.wrap {
+    width: 800px;
+    margin: 30px auto;
+    height: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* 제목 섹션 */
+.diary-Detail-Title h1 {
+    margin: 30px auto;
+    width: 70%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 작성 날짜 섹션 */
+.diarydate {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* 내용 컨테이너 */
+.diarycontent {
+    width: 70%;
+    margin: 20px auto; /* 위로 올리기 위해 margin-top을 50px에서 20px로 줄임 */
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* 내용 섹션 */
+.diary-content {
+    width: 100%;
+    margin-top: 10px; /* 위로 올리기 위해 margin-top을 20px에서 10px로 줄임 */
+    min-height: 200px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    background-color: #fafafa;
+}
+
+/* 유저 아이디와 다이어리 아이디 섹션 */
+.user-id, .diary-id {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* 제목을 강조할 때 사용하는 strong 태그 */
+strong {
+    font-weight: bold;
+    color: #444;
+}
+
+/* strong 태그 안에 있는 텍스트에 여백을 추가하여 정렬 */
+.diarycontent strong {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}

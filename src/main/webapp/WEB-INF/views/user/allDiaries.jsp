@@ -11,37 +11,56 @@
 <title>Insert title here</title>
   <link rel="stylesheet" href="${resPath}css/bootstrap.min.css">
   <link rel="stylesheet" href="${staticUrl}css/footer.css">
+  <style type="text/css">
+    h1 {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    
+    #diary-list {
+      width: 800px;
+      margin: 20px auto;
+      hegiht: auto;
+      min-height: 100%;
+    
+    }
+    .diary-row {
+      margin : 10px auto;
+    }
+    .diary-col {
+      margin : 10px auto;
+    }
+  </style>
 </head>
 <body>
-  <h1> 전체 다이어리 리스트</h1> 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>아이디</th>
-          <th>제목</th>
-          <th>날짜</th>
-          <th>이미지</th>
-        </tr>
-      </thead>    
-      <tbody>
+  <%@ include file="../user/navbar/navbar.jsp" %>
+  <div class="wrap">
+    <div id="diary-list">
+      <div style="margin: 30px 0">
+        <h1>전체 다이어리 리스트</h1>
+      </div>
+      
+        <div class="row diary-row">
         <C:forEach var="diaryList" items="${diary}">
-        <tr>
-          <td>
-              ${diaryList.diary_id} 
-          </td>
-           <td>
-            <a href="${context}/diaryDetail/${diaryList.diary_id}">
-              ${diaryList.diary_title}
-            </a>
-          </td>        
-          <td>${diaryList.diary_date}</td>        
-          <td>${diaryList.attachment_file}</td>        
-        </tr>
-        </C:forEach>
-      </tbody>
-    </table>
-  </div>
+          <div class="col-3 diary-col"> 
+            <div class="card">
+              <img class="card-img-top" alt="cover-img" src="${diaryList.attachment_file}">
+              <div class="card-body">
+                <div class="card-text">
+                  <a href="${context}diaryDetail/${diaryList.diary_id}">
+                    ${diaryList.diary_title}
+                  </a>
+                  <div>
+                    ${diaryList.diary_date}
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+         </C:forEach>
+        </div>
+      </div>
+    </div>
   <!-- 작성자 : 최은지  -->    
   <!-- footer  -->
   <%@ include file="../user/footer/footer.jsp" %>

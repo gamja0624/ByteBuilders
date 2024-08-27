@@ -1,7 +1,6 @@
 package himedia.project.bytebuilders.dto;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,25 +11,31 @@ import lombok.Setter;
 public class Diary {
 	
 	// 필드
-	int diary_id;
-	int user_id;
-	String diary_title;
-	String diary_content;
-	Date create_date;
-	Date diary_date;
-	boolean is_public;
-	String attachment_file;
+	private int diary_id;
+	private int user_id;
+	private int topic_id;
+	private String diary_title;
+	private String diary_content;
+	private Date diary_date;
+	private Date create_date;
+	private int is_public;
+	private String attachment_file;
+	private int emoji_id;
 	
 	// 생성자
-	public Diary(int diary_id, int user_id,String diary_title, String diary_content, Date create_date, Date diary_date,
-			boolean is_public, String attachment_file) {
-		this.diary_id = diary_id;
+	public Diary(int user_id, int topic_id, 
+			String diary_title, String diary_content,  
+			Date diary_date, Date create_date,
+			int is_public, String attachment_file, int emoji_id) {
 		this.user_id = user_id;
+		this.topic_id = topic_id;
 		this.diary_title = diary_title;
 		this.diary_content = diary_content;
-		this.create_date = create_date;
 		this.diary_date = diary_date;
+		this.create_date =create_date;
 		this.is_public = is_public;
 		this.attachment_file = attachment_file;
+		this.emoji_id = emoji_id;
 	}
+
 }

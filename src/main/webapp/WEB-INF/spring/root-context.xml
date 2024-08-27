@@ -15,10 +15,42 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
-	<!-- repository 빈  -->	
-  	<bean id="repository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 	
+  	<!-- repository 빈 : 이용자 -->
+  	<bean id="UserRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.UserRepository" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+ 	</bean>
+ 	
+ 		
+  	<!-- repository 빈 : 관리자 -->
+	<bean id="Adminrepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.AdminRepository"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- repository 빈 : 다이어리 -->	
+  	<bean id="DiaryRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
   		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.DiaryRepository" />
   		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
  	</bean>
+ 	
+	<!-- repository 빈 : 주제 -->	
+  	<bean id="TopicsRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.TopicsRepository" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+ 	</bean>
+  	<!-- repository 빈 : qna -->
+  	<bean id="QnARepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.QnARepository" />
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+ 	</bean>
+ 	
+ 	<!--  repository 빈 : 공지사항  -->
+	<bean id="Noticerepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bytebuilders.repository.NoticeRepository"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+ 		
 </beans>

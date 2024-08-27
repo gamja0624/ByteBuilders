@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.user-notice-list {
+	width:50%;
+	margin: 0 auto;
+}
+
+.noticesearchbar {
+	display: flex;
+	text-align:center;	
+	justify-content: center;
+	align-items: center;
+	width:50%;
+	margin: 0 auto;
+    height:50%;
+    	
+ }
+
+
+
+.noticetable {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	margin: 0 auto;
+	height: 50%;
+}
