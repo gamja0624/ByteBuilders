@@ -89,6 +89,20 @@ public class AdminController {
 		return "admin/notice/noticeList";
 	}
 	
+	@GetMapping("/noticeSearchResults")
+	public String noticeSearch(@RequestParam("notice_title") String notice_title,
+			Model model, @SessionAttribute(name = "admin_key", required = false) String admin_key) {
+		
+		if(admin_key == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "admin/login");
+			return "alert";
+		}
+		
+		model.addAttribute("notices", noticeRepository.findbytitle(notice_title));
+		return "admin/notice/noticeList";
+	}
+	
 	@GetMapping("/notice/{noticeId}")
 	public String noticeDetail(@PathVariable("noticeId") int noticeId, Model model,
 			@SessionAttribute(name = "admin_key", required = false) String admin_key) {
@@ -99,7 +113,10 @@ public class AdminController {
 			return "alert";
 		}
 		
-		model.addAttribute("notice", noticeRepository.findbyId(noticeId));
+		Notice notice = noticeRepository.findbyId(noticeId);
+		notice.setNotice_content(notice.getNotice_content().replace("<br>", "\r\n"));
+		
+		model.addAttribute("notice", notice);
 		return "admin/notice/noticeDetail";
 	}
 	
@@ -203,8 +220,5 @@ public class AdminController {
 		diaryRepository.delete(diary_id);
 		return "redirect:/memberDiaryList";
 	}
-	
-	
-	
 	
 }

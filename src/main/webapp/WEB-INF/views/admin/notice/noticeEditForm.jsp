@@ -14,6 +14,7 @@
 <link href="${resPath}css/adminNoticeForm.css" rel="stylesheet">
 </head>
 <body>
+  <%@ include file="/WEB-INF/views/admin/navbar/navbar_admin.jsp" %>
   <div class="content wrap">
     <h2 class="fs-1 fw-bold my-3">
         공지사항 수정
@@ -67,6 +68,12 @@
       </div>
     </form>
   </div>
-  
+  <div>
+      <button class="btn btn-secondary"
+      type="button"
+      onclick="location.href='${context}admin/notice'">
+        목록으로
+      </button>
+    </div>
 </body>
 </html>

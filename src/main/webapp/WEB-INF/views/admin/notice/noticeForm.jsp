@@ -66,7 +66,6 @@
           공지 등록
         </button>
       </div>
-      
     </form>
   </div>
 </body>

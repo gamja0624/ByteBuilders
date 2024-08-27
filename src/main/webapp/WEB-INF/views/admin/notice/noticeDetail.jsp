@@ -11,29 +11,10 @@
 <meta charset="UTF-8">
 <title>${notice.notice_title}</title>
 <link href="${resPath}css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-<link href="${resPath}css/adminNoticeDetail.css" rel="stylesheet">
-</head>
-<body>
-  <div class="wrap">
-    <div class="title">
-      <h2>
-        ${notice.notice_title} 
-      </h2>
-      <p class="text-end">
-        ${notice.notice_date}
-      </p>
-    </div>
-    <hr>
-    
-    <div class="content text-start">
-      ${notice.notice_content}
-    </div>
-    
-=======
 <link href="${resPath}css/adminNoticeForm.css" rel="stylesheet">
 </head>
 <body>
+  <%@ include file="/WEB-INF/views/admin/navbar/navbar_admin.jsp" %>
   <div class="content wrap">
     <h2 class="fs-1 fw-bold my-3">
         상세 공지사항
@@ -82,7 +63,6 @@
         </textarea>
       </div>
     </form>
->>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
     <div>
       <button class="btn btn-secondary"
       type="button"
@@ -91,7 +71,5 @@
       </button>
     </div>
   </div>
-  
-
 </body>
 </html>

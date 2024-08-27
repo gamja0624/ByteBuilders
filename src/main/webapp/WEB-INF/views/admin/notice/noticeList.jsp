@@ -12,29 +12,27 @@
 <title>공지사항 리스트</title>
 <link href="${resPath}css/adminNotice.css" rel="stylesheet">
 <link href="${resPath}css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-<link href="" rel="stylesheet">
 </head>
 <body>
-  <div>
+  <%@ include file="/WEB-INF/views/admin/navbar/navbar_admin.jsp" %>
+  <div class="wrap">
     <h2 class="fs-1 fw-bold my-3">
         공지사항 리스트
     </h2>
     
     <div class="searchbar">
-      <form  
-      role="search" 
-      action="${context}noticeSearchResults" 
-      method="post">
+      <form class="d-flex" 
+      action="${context}admin/noticeSearchResults" 
+      method="get">
         <input class="form-control me-2" 
-        type="text" id="selectKeyword" 
-        name="notice" 
-        placeholder="search...">
-        <span class="searchbar-icon">
-          <i class="fas fa-search">
-          </i>
-        </span>
-       </form>  
+        type="text" 
+        name="notice_title" 
+        placeholder="제목을 입력해주세요...">
+        <button class="btn btn-secondary"
+        type="submit">
+          검색하기
+        </button>
+      </form>  
     </div>
     
     <div class="content my-5">
@@ -90,11 +88,6 @@
          type="button" 
          onclick="location.href='${context}admin/noticePost'"> 
            작성하기 
-        </button>
-        <button class="btn btn-primary"
-        type="button"
-        onclick="location.href='${context}admin/logout'">
-          로그아웃
         </button>
       </div>
     </div>

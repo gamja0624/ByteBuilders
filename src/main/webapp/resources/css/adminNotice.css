@@ -1,41 +1,13 @@
 @charset "UTF-8";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
 .content {
 	max-width: 70%;
 	margin: 30px auto;
 }
-<<<<<<< HEAD
-=======
 
 .searchbar {
-  overflow: hidden;
-  background-color: #BE6081;
-  backdrop-filter: blur(2px);
+	width: 30%;
+	margin: 0 auto;
+	height: 50px;
+	white-space: nowrap;
 }
-.searchbar-icon {
-  right: 27px;
-  top: 25px;
-  background-color: transparent;
-  color: #BE6081;
-  cursor: pointer;
-}
-input[type=text] {
-  padding: 9px;
-  border: none;
-  margin: 16px 14px;
-  font-size: 18px;
-  background-color: #F4ADCD;
-  text-align: left;
-  text-indent: 8px;
-  outline: none;
-}
-.searchbar , input[type=text] {
-  border-radius: 30px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  
-}
->>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
