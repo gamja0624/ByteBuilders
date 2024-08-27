@@ -48,8 +48,7 @@ public class AdminController {
 	
 	@PostMapping("/login")
 	public String adminLoginCheck(@ModelAttribute("admin") Admin admin,
-			HttpServletRequest request, Model model,
-			RedirectAttributes ra) {
+			HttpServletRequest request, RedirectAttributes ra) {
 		
 		if(adminRepository.login(admin).isPresent()) {
 			HttpSession session = request.getSession();
@@ -57,8 +56,6 @@ public class AdminController {
 			return "redirect:/admin/notice";
 		} 
 		
-//		model.addAttribute("loginFailure", true );
-		//ra.addAttribute("message", "아이디 또는 비밀번호가 잘못 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.") ;
 		ra.addFlashAttribute("loginFailure", true);
 		
 		return "redirect:/admin/login";

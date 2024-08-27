@@ -3,6 +3,9 @@ package himedia.project.bytebuilders.controller.userController;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import himedia.project.bytebuilders.dto.Notice;
 import himedia.project.bytebuilders.dto.QnA;
@@ -69,6 +73,32 @@ public class UserBasicController {
     	return "user/account/login";
     }
     
+    @PostMapping("/login")
+    public String loginCheck(@ModelAttribute("user") User user, RedirectAttributes ra,
+    		HttpServletRequest request) {
+    	
+		if(userRepository.login(user).isPresent()) {
+			log.info("성공");
+			HttpSession session = request.getSession();
+			session.setAttribute("user_id", userRepository.login(user).get().getUser_id());
+			return "redirect:/allDiaries";
+		} 
+    	
+		ra.addFlashAttribute("loginFailure", true);
+    	return "redirect:/login";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+    	
+    	HttpSession session = request.getSession(false);
+    	if(session != null){
+			session.invalidate();
+		}
+    	
+    	return "redirect:/login";
+    }
+    
     
     // 임시 컨트롤러 (이용자 목록 조회)
     @GetMapping("/test")
@@ -113,6 +143,4 @@ public class UserBasicController {
     	model.addAttribute("QnA", qnaDetail.get());
     	return "user/qna/qnaDetail";
     }
-	
-	
 }

@@ -29,7 +29,7 @@
          <div class="my-3 row">
           <label for="tilte" class="col-sm-1 col-form-label "> 제 목</label> 
           <div class="col-sm-11">
-            <input type="text" id="title" name="title" class="form-control form-border" >
+            <input type="text" id="title" name="diary_title" class="form-control form-border" >
           </div>
         </div>
         </div>
@@ -47,12 +47,9 @@
           <!--  날짜 : date -->
           <span>
             <label for="date">날 짜</label> 
-            <input type="date" id="date" name="date">
+            <input type="date" id="date" name="diary_date">
           </span>
           
-          <span>
-            <input type="number" name="userId" placeholder="유저아이디 : 100004">
-          </span>
           
         </div>
         <!--  첨부파일 : 이미지 -->
@@ -63,6 +60,7 @@
           <div class="col-sm-10">
             <input 
               type="file" 
+              accept="image/*"
               id="formFile" 
               name="formFile" 
               class="form-control form-border">
@@ -74,18 +72,18 @@
           <label for="content">일기 내용</label>
           <textarea  
             id="exampleFormControlTextarea1" 
-            name="content" 
+            name="diary_content" 
             class="form-control form-border diary-content"
             rows="2"></textarea>
         </div>
 
         <div class="diary-last">
           <label>일기 비공개</label>
-          <input type="checkbox">
+          <input type="checkbox"
+          name="is_public" >
           <button 
             type="submit"  
             id="is-public"  
-            name="is-public" 
             class="submit-button">작성 완료</button>
         </div>
 

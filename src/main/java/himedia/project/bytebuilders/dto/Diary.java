@@ -18,15 +18,15 @@ public class Diary {
 	private String diary_content;
 	private Date diary_date;
 	private Date create_date;
-	private int is_public;
+	private boolean is_public;
 	private String attachment_file;
-	private int emoji_id;
+	private Integer emoji_id;
 	
 	// 생성자
 	public Diary(int user_id, int topic_id, 
 			String diary_title, String diary_content,  
 			Date diary_date, Date create_date,
-			int is_public, String attachment_file, int emoji_id) {
+			boolean is_public, String attachment_file, Integer emoji_id) {
 		this.user_id = user_id;
 		this.topic_id = topic_id;
 		this.diary_title = diary_title;

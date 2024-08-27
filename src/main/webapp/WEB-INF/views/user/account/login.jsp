@@ -3,6 +3,7 @@
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
 <C:url var="resPath" value="/resources/" />
 <C:url var="staticUrl" value="/resources/" />
+<C:url var="context" value="/" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,6 +36,12 @@
   body, html {
   	/* 수정 */
   	height: 100%;
+  }
+  
+  h4 {
+    font-size : 12px;
+    color: red;
+    margin: 10px auto;
   }
   
   .login-container {
@@ -118,18 +125,33 @@
 <body>
 
   <%@ include file="../../user/navbar/navbar.jsp"%>
-  <div class="login-container">
-    <div class="login-box">
-      <h2>로그인</h2>
-      <input type="text" placeholder="아이디"> <input
-        type="password" placeholder="비밀번호">
-      <button type="submit">로그인</button>
-
-      <div class="additional-options">
-        <a href="#">회원가입</a> <a href="#">비밀번호 찾기</a>
+  <form action="${context}login"
+  method="post">
+    <div class="login-container">
+      <div class="login-box">
+        <h2>로그인</h2>
+        <input type="text" 
+        name="email"
+        placeholder="이메일을 입력해주세요..."> 
+        <input
+          type="password" 
+          name="password"
+          placeholder="비밀번호">
+          
+        <button type="submit">로그인</button>
+        
+        <C:if test="${loginFailure}">
+          <h4>
+            아이디 또는 비밀번호가 잘못 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.
+          </h4>
+        </C:if>
+  
+        <div class="additional-options">
+          <a href="#">회원가입</a> <a href="#">비밀번호 찾기</a>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </body>
 <%@ include file="../../user/footer/footer.jsp"%>
 </html>

@@ -8,9 +8,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import himedia.project.bytebuilders.dto.Diary;
-import himedia.project.bytebuilders.dto.QnA;
 
 
 public interface DiaryRepository {
@@ -21,13 +21,10 @@ public interface DiaryRepository {
 	public List<Diary> userIdFindD();
 
 	// [ 저장 ] 일기 저장
-	@Insert("INSERT INTO diary("
-			+ "user_id, topic_id, diary_title, diary_content, "
-			+ "create_date, diary_date, is_public, attachment_file, emogi_id)"
-			+ "VLAUES("
-			+ "#{user_id}, #{topic_Id}, #{diary_title}, #{diary_content}, "
-			+ "#{create_date}, #{diary_date}, #{is_public}, #{attachment_file}, #{emogi_id})")
-	void save (Diary dairy);
+	@Insert("INSERT INTO diary "
+			+ "(user_id, topic_id, diary_title, diary_content, diary_date, is_public, attachment_file, emoji_id) "
+			+ "VALUES (#{user_id}, #{topic_id}, #{diary_title}, #{diary_content}, #{diary_date}, #{is_public}, #{attachment_file}, #{emoji_id})")
+	void save (Diary diary);
 	
 	// [ 조회 ] 일기 상세 페이지 조회 ( 일기 제목, 일기 날짜, 일기 내용, 일기 이미지, 공개 여부, * (+) 주제, 이모지 )
 	@Select("SELECT diary_id, diary_title, diary_date, diary_content, attachment_file, is_public "
@@ -85,6 +82,5 @@ public interface DiaryRepository {
 			+ "FROM diary "
 			+ "WHERE diary_id = #{diary_id}")
 	Diary findById(int diary_id);
-	
 
 }

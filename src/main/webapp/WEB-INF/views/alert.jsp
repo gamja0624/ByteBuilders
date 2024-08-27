@@ -12,15 +12,8 @@
 </head>
 <body>
 <script type="text/javascript">
-<<<<<<< HEAD
-	var message = '${msg}';
-	var returnUrl = '${url}';
-	alert(message);
-	document.location.href= ${context}+returnUrl;
-=======
 alert("${msg}");
 document.location.href= "${context}"+"${url}";
->>>>>>> c8a7e98a1ecd9e5db33a38df51d904fb79cae64e
 </script>
 </body>
 </html>

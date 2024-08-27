@@ -1,6 +1,7 @@
 package himedia.project.bytebuilders.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -29,4 +30,11 @@ public interface UserRepository {
 			+ "WHERE user_id LIKE CONCAT('%', #{user_id},'%')")
 	List<User> UserSearch(int user_id);
 
+	// 작성자 : 양한재
+	// 이메일, pw 검사
+	@Select("SELECT *"
+			+ " FROM user"
+			+ " WHERE email LIKE #{email} AND password LIKE #{password}")
+	Optional<User> login(User user);
+	
 }
